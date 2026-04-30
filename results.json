@@ -1,0 +1,86 @@
+[
+  {
+    "query": "What are the ingestion pipeline steps?",
+    "top_k": 3,
+    "results": [
+      {
+        "chunk_text": "Write a script using LangChain primitives that performs the following steps in order:\n1. Load the PDF using a LangChain document loader (e.g. PyPDFLoader, PDFMinerLoader, UnstructuredPDFLoader).\n2. Split the loaded document using a LangChain text splitter (e.g. RecursiveCharacterTextSplitter). Choose chunk size and overlap thoughtfully - justify both in the README.",
+        "page_number": 1,
+        "score": 0.2814
+      },
+      {
+        "chunk_text": "3. Generate embeddings using a LangChain embedding integration (e.g. OpenAIEmbeddings, HuggingFaceEmbeddings, CohereEmbeddings).\n4. Persist the embeddings to a LangChain-compatible vector store (e.g. Chroma, FAISS, Pinecone). Use the vector store's built-in persistence method.",
+        "page_number": 1,
+        "score": 0.3122
+      },
+      {
+        "chunk_text": "PART 1 - INGESTION\nWrite a script using LangChain primitives that performs the following steps in order:",
+        "page_number": 1,
+        "score": 0.3741
+      }
+    ]
+  },
+  {
+    "query": "What is the retrieval endpoint specification?",
+    "top_k": 3,
+    "results": [
+      {
+        "chunk_text": "PART 2 - RETRIEVAL ENDPOINT\nExpose a single HTTP endpoint. Embed the incoming query using the same model from ingestion and call similarity_search_with_score() (or the equivalent method) on the vector store. Return the top-k results directly.",
+        "page_number": 1,
+        "score": 0.2598
+      },
+      {
+        "chunk_text": "Method Endpoint Description\nPOST /query Request body: { \"query\": string, \"top_k\": int }. Response: array of { chunk_text, page_number, score }.",
+        "page_number": 1,
+        "score": 0.3067
+      },
+      {
+        "chunk_text": "Do not wrap retrieval in a RetrievalQA chain, ConversationalRetrievalChain, or any LLM chain. The endpoint must call the vector store's similarity search method directly and return raw results.",
+        "page_number": 1,
+        "score": 0.3489
+      }
+    ]
+  },
+  {
+    "query": "What are the evaluation criteria and their weights?",
+    "top_k": 3,
+    "results": [
+      {
+        "chunk_text": "EVALUATION\nCriterion Weight What we look for\nPipeline runs end-to-end without errors 35% Ingestion completes; retrieval returns relevant results.",
+        "page_number": 2,
+        "score": 0.2703
+      },
+      {
+        "chunk_text": "Correct use of LangChain primitives for each stage 25% Right component used for the right purpose; no misuse of chains.\nRetrieval quality - relevance of returned chunks 20% results.json entries are semantically relevant to each query.",
+        "page_number": 2,
+        "score": 0.3015
+      },
+      {
+        "chunk_text": "README quality and component choices with reasoning 15% Can justify each LangChain component selected.\nLangGraph graph structure and documentation (bonus) +5% Named nodes, documented flow, inspectable graph.",
+        "page_number": 2,
+        "score": 0.3341
+      }
+    ]
+  },
+  {
+    "query": "What are the submission instructions?",
+    "top_k": 3,
+    "results": [
+      {
+        "chunk_text": "Instructions\nKindly create a private GitHub repository named: {yourName_Nestack_Submission} (e.g., roy_Nestack_Submission) and add the following contributors for evaluation:\n- bishal@nestack.com\n- sannidhya@nestack.com\n- sanjay@nestack.com",
+        "page_number": 2,
+        "score": 0.2891
+      },
+      {
+        "chunk_text": "Your submission must include:\n- A ZIP file of your complete codebase\n- A live deployment link\n- Any necessary credentials if your project includes authentication",
+        "page_number": 2,
+        "score": 0.3204
+      },
+      {
+        "chunk_text": "Additionally, ensure your repository includes a README.md with:\n- The deployment link clearly mentioned\n- Setup and run instructions if applicable\nNOTE: PUBLIC REPOSITORIES ARE DISQUALIFIED FROM THE HIRING PROCESS",
+        "page_number": 2,
+        "score": 0.3558
+      }
+    ]
+  }
+]
