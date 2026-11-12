@@ -201,24 +201,4 @@ A 20 % overlap means the tail of a bullet point is repeated at the head of the n
 
 See [`results.json`](./results.json) for four queries run against the assessment PDF, each returning the top-3 most relevant chunks with `chunk_text`, `page_number`, and `score`.
 
----
 
-## Deployment (Railway / Render / Fly.io)
-
-1. Push the repo (private).
-2. Set start command: `uvicorn server:app --host 0.0.0.0 --port $PORT`
-3. Either commit `chroma_db/` or run `ingest.py` as a one-off job before starting the server.
-4. Paste the live URL in this README and in your submission.
-
----
-
-## Constraints Checklist
-
-- [x] Python only
-- [x] `PyPDFLoader` for loading
-- [x] `RecursiveCharacterTextSplitter` for splitting
-- [x] `HuggingFaceEmbeddings` for embeddings
-- [x] `Chroma` with built-in persistence for the vector store
-- [x] `/query` calls `similarity_search_with_score()` directly — no `RetrievalQA`, no LLM chain
-- [x] LangGraph with named nodes (`load → split → embed → store`)
-- [x] `results.json` with ≥ 3 queries
